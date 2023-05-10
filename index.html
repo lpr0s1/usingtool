@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guide des ports</title>
+    <style>
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        user-select: none;
+        margin: 0;
+        padding: 0;
+      }
+
+
+      #header {
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+      }
+
+      #header h1 {
+        margin: 0;
+        font-size: 36px;
+      }
+
+      #header button {
+        background-color: #fff;
+        color: #333;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      #header button:hover {
+        background-color: #333;
+        color: #fff;
+      }
+
+      #port-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+      }
+
+      .port-card {
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+        margin: 10px;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .port-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .port-icon {
+        font-size: 72px;
+        margin-bottom: 20px;
+      }
+
+      .port-number {
+        font-size: 29px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .port-name {
+        font-size: 19px;
+        text-align: center;
+        margin: 0 20px;
+      }
+
+      .port-info {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        transition: all 0.3s ease;
+      }
+
+      .port-info.show {
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+        margin-top: 20px;
+      }
+
+      .close-button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 19px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .close-button:hover {
+        background-color: #fff;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <b>
+    <div id="header">
+      <h1>Guide des ports</h1>
+
+      <button id="all-ports-button"><b>Tous les ports</b></button>
+    </div>
+    <div id="port-container">
+      <div class="port-card">
+        <i class="port-icon fas fa-globe"></i>
+        <div class="port-number"><i>80</i></div>
+        <div class="port-name"><i>HTTP</i></div>
+        <div class="port-info">
+          Le port 80 est utiliser pour les communications HTTP (Hypertext Transfer Protocol). Il est generalement utiliser pour les connexions web et permet aux utilisateurs d'acceder aux sites web via un navigateur web.
+          <button class="close-button">Fermer</button>
+        </div>
+      </div>
+      <div class="port-card">
+        <i class="port-icon fas fa-lock"></i>
+        <div class="port-number"><i>443</i></div>
+        <div class="port-name"><i>HTTPS</i></div>
+        <div class="port-info">
+          Le port 443 est utiliser pour les communications HTTPS (Hypertext Transfer Protocol Secure). Il est generalement utilise pour les connexions web sécuriser et permet de securiser les donnees transmises entre le serveur web et le navigateur web.
+          <button class="close-button">Fermer</button>
+        </div>
+      </div>
+      <div class="port-card">
+        <i class="port-icon fas fa-terminal"></i>
+        <div class="port-number"><i>22</i></div>
+        <div class="port-name"><i>SSH</i></div>
+        <div class="port-info">
+          Le port 22 est utiliser pour les connexions SSH (Secure Shell). Il permet une connexion securisee a un ordinateur distant et permet de gerer les fichiers et les processus sur cet ordinateur.
+          <button class="close-button">Fermer</button>
+        </div>
+      </div>
+      <div class="port-card">
+        <i class="port-icon fas fa-database"></i>
+        <div class="port-number"><i>3306</i></div>
+        <div class="port-name"><i>MySQL</i></div>
+        <div class="port-info">
+          Le port 3306 est utilise pour les connexions MySQL. Il permet aux utilisateurs d'acceder a des bases de donnees MySQL via des applications ou des outils de gestion de base de donnees.
+          <button class="close-button">Fermer</button>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+  const portCards = document.querySelectorAll(".port-card");
+  const closeButton = document.querySelectorAll(".close-button");
+  const allPortsButton = document.querySelector("#all-ports-button");
+
+  portCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      card.querySelector(".port-info").classList.toggle("show");
+    });
+  });
+
+  closeButton.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      button.parentNode.classList.remove("show");
+    });
+  });
+
+  allPortsButton.addEventListener("click", () => {
+    portCards.forEach((card) => {
+      card.querySelector(".port-info").classList.toggle("show");
+    });
+  });
+</script>
+</b>
+
+
+
+
+<font size="2px">
+
+    <!-- Modal pour la page Exploit/payload -->
+  <div id="modal" class="modal">
+  <div class="modal-content">
+    <h1>Exploit/payload</h1>
+    <p>Toutes les infos sur les exploits, backdoors et payloads.</p>
+    <div class="modal-buttons">
+      <div class="port-card">
+        <div id="payload-info" class="modal-info">
+          <h1>Payload</h1>
+          <p>Un payload est un code malveillant qui est envoyé sur une cible pour causer des dommages ou voler des informations. Les attaquants peuvent utiliser des payloads pour prendre le contrôle d'un système, installer des logiciels malveillants ou voler des données.</p>
+        </div>
+      </div>
+      <div class="port-card">
+        <div id="backdoor-info" class="modal-info">
+          <h1>Backdoor</h1>
+          <p>Une backdoor est une méthode secrète pour accéder à un système ou un logiciel sans passer par les canaux normaux d'authentification ou de sécurité. Les backdoors sont souvent créées par des développeurs pour effectuer des tests, mais elles peuvent également être exploitées par des pirates pour accéder à des systèmes non autorisés.</p>
+        </div>
+      </div>
+      <div class="port-card">
+        <div id="exploit-info" class="modal-info">
+          <h1>Exploit</h1>
+          <p>Un exploit est un code ou une technique qui exploite une vulnérabilité dans un système ou un logiciel pour causer des dommages ou prendre le contrôle de la machine. Les exploits peuvent être utilisés pour installer des logiciels malveillants, voler des informations ou accéder à un système non autorisé.</p>
+        </div>
+      </div>
+      <div class="port-card">
+        <div id="ddos-info" class="modal-info">
+          <h1>Attaque DDOS</h1>
+          <p>Une attaque par déni de service distribué (DDOS) est une attaque où des pirates inondent un serveur ou un réseau avec des requêtes pour le rendre indisponible. Les attaquants utilisent souvent des botnets (réseaux d'ordinateurs infectés) pour mener des attaques DDOS massives.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
